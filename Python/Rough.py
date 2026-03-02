@@ -1,36 +1,27 @@
 class Solution:
-    def minRemoval(self, nums, k) -> int:
-        n=len(nums)
-        nums.sort()
-        op_count=0
-        l=0
-        updated_len=0
-        for r in range(n):
-            while nums[r]>nums[l]*k:
-                l+=1
-            updated_len=max(updated_len,r-l+1)
-            op_count=n-updated_len
-        return op_count
-
-nums=[1,6,4,2,9]
-#nums=[10,30,11]
-k=3
+    def minSwaps(self, grid):
+        # grid[0][1] grid[0][2]
+        #            grid[1][2]
+        # n=len(grid)
+        # count=0
+        # for i in range(n):
+        #     for j in range(1,n):
+        #         if grid[i][1:].count(0)==n-j:
+        #             if i==j-1:
+        #                 grid[i],grid[j-1]=grid[j-1],grid[i]
+        #             else:
+        #                 grid[i],grid[j-1]=grid[j-1],grid[i]
+        #                 count+=1 
+        # return count
+        
+        # 1. Count trailing zeros for each row
+        # 2. For each position i, find the first available row that satisfies the condition
+            # Look for a row from i onwards that has enough zeros
+            # If no such row is found, it's impossible
+        # 3. Bubble the found row up to position i
+            # Each step in the bubble is one swap
+            return grid
+        
 so=Solution()
-print(so.minRemoval(nums,k))
-
-
-
-# maximum_num,minimum_num=max(nums),min(nums)
-#             # max <= min * k
-#             if maximum_num<=minimum_num*k:
-#                 sol=False
-#                 break
-#             if len(nums)>1:
-#                 if maximum_num>(minimum_num*k*2):
-#                     nums.remove(maximum_num)
-#                     op_count+=1
-#                 else:
-#                     nums.remove(minimum_num)
-#                     op_count+=1
-#             else:
-#                 sol=False
+grid =[[0,0,1],[1,1,0],[1,0,0]]
+print(so.minSwaps(grid))
