@@ -1,17 +1,23 @@
+import itertools
 class Solution:
-    def minimumDifference(self, nums, k):
-        if k<2:
-            return 0
-        diff=float('inf')
-        n=len(nums)
-        l=0
-        r=l+k
-        nums.sort()
-        for i in range(n-k+1):
-            max_sub,min_sub=nums[i+k-1],nums[i]
-            temp_diff=max_sub-min_sub
-            diff=min(diff,temp_diff)
-        return diff
+    def numberOfStableArrays(self, zero: int, one: int, limit: int) -> int:
+        res=[]
+        interval=limit+1
+        n=zero+one
+        final=[]
+        temp_list = [list(combo) for combo in itertools.product([0, 1], repeat=n)]
+        for i in temp_list:
+            for j  in range(n-interval):
+                if i.count(1)==one and i[j:j+interval].count(1)<interval:
+                    res.append(i)
+        # for i in res:
+        #     for j in range(len(i)-interval):
+        #         if i[j:j+interval].count(0)<interval:
+        #             final.append(i)
+        res=[*set(res)]
+        print(len(res))
+        
+        
+        
 so=Solution()
-nums=[9,4,1,7]
-print(so.minimumDifference(nums,2))
+print(so.numberOfStableArrays(3,3,2))
