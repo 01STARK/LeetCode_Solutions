@@ -5,3 +5,8 @@ class Solution:
         tot=inta+intb
         print(tot)
         return format(tot,'b')
+
+# Better Approach
+# class Solution:
+#     def addBinary(self, a: str, b: str) -> str:
+#         return bin(int(a,2)+int(b,2))[2:]
