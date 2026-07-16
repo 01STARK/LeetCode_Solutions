@@ -13,4 +13,4 @@ class Solution:
 
             if len(min_heap)>k:
                 heapq.heappop(min_heap)
-        return [freq for num,freq in sorted(min_heap,reverse=True)]
+        return [freq for num,freq in min_heap]
