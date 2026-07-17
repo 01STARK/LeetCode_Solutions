@@ -15,3 +15,7 @@ class Solution:
             else:
                 pile.append(i)
         return len(pile)==0
+
+so=Solution()
+s='([{}()])'
+so.isValid(s)
